@@ -1,0 +1,362 @@
+[
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "INT_NODE_IMUX_53_INT_OUT1"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "IMUX_W37"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "INT_NODE_IMUX_54_INT_OUT1"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "IMUX_W37"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "IMUX_W37"
+    },
+    "end": {
+      "tile": {
+        "name": "CLEM",
+        "x": 1,
+        "y": 0
+      },
+      "name": "CLE_CLE_M_SITE_0_H4"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "WW2_W_END6"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "INT_NODE_IMUX_53_INT_OUT1"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 0
+      },
+      "name": "WW2_W_BEG6"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "WW2_W_END6"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "LOGIC_OUTS_W28"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "INT_NODE_SDQ_88_INT_OUT0"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "CLEM",
+        "x": 1,
+        "y": 0
+      },
+      "name": "CLE_CLE_M_SITE_0_H_O"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "LOGIC_OUTS_W28"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "INT_NODE_SDQ_88_INT_OUT0"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "NN2_W_BEG6"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 0
+      },
+      "name": "NN2_W_BEG6"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 2
+      },
+      "name": "NN2_W_END6"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 2
+      },
+      "name": "INT_NODE_SDQ_87_INT_OUT1"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 2
+      },
+      "name": "EE2_W_BEG7"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 2
+      },
+      "name": "EE2_W_BEG7"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 2
+      },
+      "name": "EE2_W_END7"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 2
+      },
+      "name": "EE2_W_BEG7"
+    },
+    "end": {
+      "tile": {
+        "name": "CLEL_R",
+        "x": 1,
+        "y": 2
+      },
+      "name": "EASTBUSIN_FT0_23"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 2
+      },
+      "name": "NN2_W_END6"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 1,
+        "y": 2
+      },
+      "name": "INT_NODE_SDQ_87_INT_OUT1"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 0
+      },
+      "name": "INT_NODE_SDQ_85_INT_OUT0"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 0
+      },
+      "name": "WW2_W_BEG6"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 0
+      },
+      "name": "WW2_W_BEG6"
+    },
+    "end": {
+      "tile": {
+        "name": "CLEL_R",
+        "x": 1,
+        "y": 0
+      },
+      "name": "EASTBUSOUT_FT1_22"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 0
+      },
+      "name": "SS2_W_END6"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 0
+      },
+      "name": "INT_NODE_SDQ_85_INT_OUT0"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 2
+      },
+      "name": "SS2_W_BEG6"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 0
+      },
+      "name": "SS2_W_END6"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 2
+      },
+      "name": "INT_NODE_SDQ_88_INT_OUT0"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 2
+      },
+      "name": "SS2_W_BEG6"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 2
+      },
+      "name": "EE2_W_END7"
+    },
+    "end": {
+      "tile": {
+        "name": "INT",
+        "x": 2,
+        "y": 2
+      },
+      "name": "INT_NODE_SDQ_88_INT_OUT0"
+    }
+  },
+  {
+    "begin": {
+      "tile": {
+        "name": "CLEM",
+        "x": 1,
+        "y": 0
+      },
+      "name": "CLE_CLE_M_SITE_0_H4"
+    },
+    "end": {
+      "tile": {
+        "name": "CLEM",
+        "x": 1,
+        "y": 0
+      },
+      "name": "CLE_CLE_M_SITE_0_H_O"
+    }
+  }
+]

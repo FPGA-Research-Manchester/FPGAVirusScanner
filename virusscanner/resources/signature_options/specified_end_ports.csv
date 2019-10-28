@@ -1,0 +1,4 @@
+tile_type,tile_x,tile_y,port
+CLE.*,\d+,\d+,.*CLK.*
+BRAM.*,\d+,\d+,.*CLK.*
+

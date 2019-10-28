@@ -1,0 +1,4 @@
+tile_type,tile_x,tile_y,port
+.+,\d+,\d+,.+_[A-H]Q(|2)$
+.+,\d+,\d+,.+_[A-H]_O$
+.+,\d+,\d+,.+_[A-H]MUX$

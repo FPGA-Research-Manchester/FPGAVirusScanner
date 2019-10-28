@@ -1,0 +1,67 @@
+Output for virusscanner/resources/input_designs/ring_osci_MUX.bit generated at 2019-10-28 11:27:38.091042
+
+CombinatorialLoopDetector: 1000.0
+Found the following cycles:
+  INT_X1Y0 INT_NODE_IMUX_42_INT_OUT1 -> INT_X1Y0 BYPASS_W6 -> INT_X1Y0 INODE_W_9_FT1 -> INT_X1Y0 BOUNCE_W_0_FT1 -> CLEM_X1Y0 CLE_CLE_M_SITE_0_AX -> CLEM_X1Y0 CLE_CLE_M_SITE_0_BMUX -> INT_X1Y0 LOGIC_OUTS_W17 -> INT_X1Y0 INT_NODE_SDQ_73_INT_OUT0 -> INT_X1Y0 SS1_W_BEG4 -> INT_X1Y0 NN1_W_END3 -> INT_X1Y0 INT_NODE_IMUX_42_INT_OUT1
+
+PortDetector: 0.0
+Nothing found.
+
+PathDetector: 0.0
+Nothing found.
+
+ShortCircuitDetector: 0.0
+Nothing found.
+
+AntennaDetector: 0.05
+Found the following dangling output ports:
+   INT_X1Y0 LOGIC_OUTS_E0
+   INT_X1Y0 BOUNCE_W_BLN_15_FT1
+   INT_X1Y0 LOGIC_OUTS_E12
+   INT_X1Y0 INODE_W_BLN_54_FT1
+   CLEL_R_X1Y0 CLE_CLE_L_SITE_0_A_I
+
+UnspecifiedPathDetector: 0.0
+Nothing found.
+
+AttributeDetector: 0.0
+Nothing found.
+
+FanOutDetector: 0.0
+Nothing found.
+
+Final score: 1000.05
+Output for virusscanner/resources/input_designs/ring_osci_short.json generated at 2019-10-28 13:44:40.489512
+
+CombinatorialLoopDetector: 1000.0
+Found the following cycles:
+  CLEM_X1Y0 CLE_CLE_M_SITE_0_H4 -> CLEM_X1Y0 CLE_CLE_M_SITE_0_H_O -> INT_X1Y0 LOGIC_OUTS_W28 -> INT_X1Y0 INT_NODE_SDQ_88_INT_OUT0 -> INT_X1Y0 NN2_W_BEG6 -> INT_X1Y2 NN2_W_END6 -> INT_X1Y2 INT_NODE_SDQ_87_INT_OUT1 -> INT_X1Y2 EE2_W_BEG7 -> INT_X2Y2 EE2_W_END7 -> INT_X2Y2 INT_NODE_SDQ_88_INT_OUT0 -> INT_X2Y2 SS2_W_BEG6 -> INT_X2Y0 SS2_W_END6 -> INT_X2Y0 INT_NODE_SDQ_85_INT_OUT0 -> INT_X2Y0 WW2_W_BEG6 -> INT_X1Y0 WW2_W_END6 -> INT_X1Y0 INT_NODE_IMUX_53_INT_OUT1 -> INT_X1Y0 IMUX_W37 -> CLEM_X1Y0 CLE_CLE_M_SITE_0_H4
+
+PortDetector: 0.0
+Nothing found.
+
+PathDetector: 0.0
+Nothing found.
+
+ShortCircuitDetector: 1.0
+INT_X1Y0 IMUX_W37 has the following inputs which can cause a short:
+   INT_X1Y0 INT_NODE_IMUX_53_INT_OUT1
+   INT_X1Y0 INT_NODE_IMUX_54_INT_OUT1
+
+AntennaDetector: 0.03
+Found the following dangling input ports:
+   INT_X1Y0 INT_NODE_IMUX_54_INT_OUT1
+Found the following dangling output ports:
+   CLEL_R_X1Y0 EASTBUSOUT_FT1_22
+   CLEL_R_X1Y2 EASTBUSIN_FT0_23
+
+UnspecifiedPathDetector: 0.0
+Nothing found.
+
+AttributeDetector: 0.0
+Nothing found.
+
+FanOutDetector: 0.0
+Nothing found.
+
+Final score: 1001.03

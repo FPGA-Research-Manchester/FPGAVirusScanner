@@ -1,0 +1,2 @@
+tile_type,tile_x,tile_y,port
+RCLK_INT_(R|L),\d+,\d+,.+BUSOUT_FT0_\d+
