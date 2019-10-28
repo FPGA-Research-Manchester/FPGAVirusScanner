@@ -1,6 +1,6 @@
 altgraph==0.16.1
 Click==7.0
-colander==0.9.9
+colander==1.7.0
 coverage==4.5.3
 decorator==4.4.0
 entrypoints==0.3
