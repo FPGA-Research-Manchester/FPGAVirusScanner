@@ -1,6 +1,7 @@
 from unittest import TestCase, mock
 
 from virusscanner.interface.datastructures.connection import Connection
+from virusscanner.interface.datastructures.implementation_graph import Graph
 from virusscanner.parsing.signatures.ring_oscillator_detection import CombinatorialLoopDetector
 
 
@@ -57,9 +58,8 @@ class TestCombinatorialLoopDetector(TestCase):
         mock_processor.return_value.print_paths.assert_not_called()
         self.assertEqual(score, 0)
 
-    @mock.patch("virusscanner.parsing.signatures.ring_oscillator_detection.GraphProcessor")
     @mock.patch("virusscanner.parsing.signatures.ring_oscillator_detection.networkx")
-    def test_detect_skips_ignored_attributes(self, mock_networkx, mock_processor):
+    def test_detect_skips_ignored_attributes(self, mock_networkx):
         mock_input = mock.Mock()
         detector_under_test = CombinatorialLoopDetector(mock_input)
         mock_graph = mock.Mock()
@@ -86,6 +86,33 @@ class TestCombinatorialLoopDetector(TestCase):
 
         mock_networkx.DiGraph.assert_called_once_with({second_port: (third_port,)})
 
-    # TODO: Fix this test.
-    def test_detect_does_preserve_other_end_ports(self):
-        self.fail()
+    @mock.patch("virusscanner.parsing.signatures.ring_oscillator_detection.networkx")
+    def test_detect_does_preserve_other_end_ports(self, mock_networkx):
+        mock_input = mock.Mock()
+        detector_under_test = CombinatorialLoopDetector(mock_input)
+
+        ignored_attribute = "fake"
+        mock_input.get_ignored_loop_attributes_list.return_value = [ignored_attribute]
+
+        first_port = mock.Mock()
+        second_port = mock.Mock()
+        third_port = mock.Mock()
+        fourth_port = mock.Mock()
+
+        connections_list = [Connection(first_port, second_port),
+                            Connection(second_port, third_port),
+                            Connection(third_port, fourth_port, {ignored_attribute}),
+                            Connection(third_port, first_port)]
+
+        expected_adjacency_list = {
+            first_port: (second_port,),
+            second_port: (third_port,),
+            third_port: (first_port,)
+        }
+
+        input_graph = Graph(connections=connections_list)
+        mock_input.get_connections_graph.return_value = input_graph
+
+        detector_under_test.detect_virus()
+
+        mock_networkx.DiGraph.assert_called_once_with(expected_adjacency_list)

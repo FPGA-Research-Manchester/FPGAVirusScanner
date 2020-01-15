@@ -72,6 +72,15 @@ class TestInput(TestCase):
         mock_creator.return_value.get_connections_from_json.assert_called_once()
         self.mock_options.return_value.set_virus_signature_option_inputs.assert_called_once()
 
-    # TODO: Finish this test
-    def test_input_removes_wanted_connections(self):
-        self.fail()
+    @mock.patch("virusscanner.interface.input_interface.ConfigParser")
+    @mock.patch("virusscanner.interface.input_interface.GraphCreator")
+    @mock.patch("virusscanner.interface.input_interface.ConnectionRemover")
+    def test_input_removes_wanted_connections(self, mock_remover, mock_creator, mock_parser):
+        mock_parser.return_value.has_section.side_effect = [True, False]
+
+        Input("some_config", "output.txt", connections_graph_file="some_json")
+
+        mock_creator.return_value.get_connections_from_json.assert_called_once()
+        mock_parser.return_value.get.assert_called_once()
+        self.mock_attributes.return_value.add_attributes_to_connections.assert_not_called()
+        mock_remover.return_value.remove_connections.assert_called_once()

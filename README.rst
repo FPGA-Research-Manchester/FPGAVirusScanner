@@ -40,7 +40,7 @@ Here are the different available virus signatures described which can be set up 
 #) Ring oscillator detection
     * virusscanner.parsing.signatures.ring_oscillator_detection.CombinatorialLoopDetector
     * Needs a section called *ring_oscillator_detection*
-        *  Requires an option called *ignored_attributes_file* to have an input *.txt* file
+        * Requires an option called *ignored_attributes_file* to have an input *.txt* file
     * This detects loops in the given implementation.
 #) Disallowed port detection
     * virusscanner.parsing.signatures.node_detection.PortDetector
@@ -76,10 +76,29 @@ Here are the different available virus signatures described which can be set up 
     * Needs a section called *fan_out_begin_nodes_file*
         * Requires an option called *fan_out_begin_nodes_file* to have an input *.csv* file
         * Requires an option called *fan_out_end_nodes_file* to have an input *.csv* file
-    * Can detect all nodes which are connected to too many end nodes. The threshold is set to 100 temporarily.
+        * Optional option called *fan_out_threshold* which has to have an input integer value
+    * Can detect all nodes which are connected to too many end nodes. If no threshold is given the port with the highest fan-out is reported.
 #) Attribute detection
     * virusscanner.parsing.signatures.attribute_detection.AttributeDetector
-    * Can detect all nodes with the attribute "LATCH".
+    * Needs a section called *attribute_detection*
+        * Requires an option called *disallowed_attributes_file* to have an input *.txt* file
+    * Can detect all nodes with the given attributes.
+#) Glitch detection
+    * virusscanner.parsing.signatures.glitch_detection.GlithyPathsDetector
+    * Needs a section called *glitch_path_detection*
+        * Requires an option called *glitch_begin_nodes_file* to have an input *.csv* file
+        * Requires an option called *glitch_end_nodes_file* to have an input *.csv* file
+        * Optional option called *glitch_score_threshold* which has to have an input integer value
+    * Detect the glitchiness factor of the desired paths. If no threshold is given the highest scoring path is reported.
+#) Glitch power estimation
+    * virusscanner.parsing.signatures.glitch_power_estimation.GlitchPowerEstimator
+    * Needs a section called *glitch_power_detection*
+        * Requires an option called *glitch_begin_nodes_file* to have an input *.txt* file
+        * Requires an option called *glitch_end_nodes_file* to have an input *.txt* file
+        * Optional option called *glitch_score_threshold* which has to have an input integer value
+        * Optional option called *connection_power_cost_file* which has to have an input *.csv* file
+    * Estimates how much wire segments in the whole design can change it's value during a clock cycle. This information can be used for power estimation.
+
 
 To look up the formats of the option files look at the files under the resources directory.
 

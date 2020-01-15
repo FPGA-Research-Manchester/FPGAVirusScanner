@@ -1,0 +1,2 @@
+begin_tile_type,begin_tile_x,begin_tile_y,begin_port,end_tile_type,end_tile_x,end_tile_y,end_port,power_cost
+.+,\d+,\d+,.+,.+,\d+,\d+,.+,2

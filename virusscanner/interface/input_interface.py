@@ -39,15 +39,14 @@ class Input:
         SignatureOptions().set_virus_signature_option_inputs(set(self.__chosen_virus_signatures.keys()),
                                                              self.__virus_signature_option_inputs, config_parser)
 
-        if config_parser.has_section(self.__CONFIG_ATTRIBUTES_SECTION):
-            AttributesAdder().add_attributes_to_connections(
-                config_parser.get(self.__CONFIG_ATTRIBUTES_SECTION, self.__CONFIG_ATTRIBUTES_OPTION),
-                self.__found_connections_graph)
-
-        # TODO: Change order to make adding attributes faster
         if config_parser.has_section(self.__CONFIG_REMOVABLES_SECTION):
             ConnectionRemover().remove_connections(
                 config_parser.get(self.__CONFIG_REMOVABLES_SECTION, self.__CONFIG_REMOVABLES_OPTION),
+                self.__found_connections_graph)
+
+        if config_parser.has_section(self.__CONFIG_ATTRIBUTES_SECTION):
+            AttributesAdder().add_attributes_to_connections(
+                config_parser.get(self.__CONFIG_ATTRIBUTES_SECTION, self.__CONFIG_ATTRIBUTES_OPTION),
                 self.__found_connections_graph)
 
     def get_connections_graph(self) -> Graph:
@@ -170,6 +169,78 @@ class Input:
             List containing begin port regular expressions to identify fan-out destination ports.
         """
         return self.__virus_signature_option_inputs[SignatureOptions.FAN_OUT_END_OPTION]
+
+    def get_fan_out_threshold(self) -> Union[int, None]:
+        """Getter method to return given fan-out threshold.
+
+        Returns:
+            Integer noting the threshold for reporting large fan-outs.
+        """
+        return self.__virus_signature_option_inputs[SignatureOptions.FAN_OUT_THRESHOLD_OPTION]
+
+    def get_glitch_path_begin_port_list(self) -> List[Dict[str, Union[str, Pattern[str]]]]:
+        """Getter method to return given input port list to identify ports from which the glitches start.
+
+        Returns:
+            List containing begin port regular expressions to identify glitch path begin ports.
+        """
+        return self.__virus_signature_option_inputs[SignatureOptions.GLITCH_PATH_BEGIN_OPTION]
+
+    def get_glitch_path_end_port_list(self) -> List[Dict[str, Union[str, Pattern[str]]]]:
+        """Getter method to return given input port list to identify ports where the glitch signal should end up.
+
+        Returns:
+            List containing begin port regular expressions to identify glitch path end ports.
+        """
+        return self.__virus_signature_option_inputs[SignatureOptions.GLITCH_PATH_END_OPTION]
+
+    def get_glitch_score_threshold(self) -> Union[int, None]:
+        """Getter method to return given glitch score threshold.
+
+        Returns:
+            Integer noting the threshold for reporting glitchy paths.
+        """
+        return self.__virus_signature_option_inputs[SignatureOptions.GLITCH_PATH_THRESHOLD_OPTION]
+
+    def get_glitch_power_begin_attribute_list(self) -> List[str]:
+        """Getter method to return given input attribute list to identify ports from which the glitches start.
+
+        Returns:
+            List containing attribute names to identify glitch path begin ports.
+        """
+        return self.__virus_signature_option_inputs[SignatureOptions.GLITCH_POWER_BEGIN_OPTION]
+
+    def get_glitch_power_end_attribute_list(self) -> List[str]:
+        """Getter method to return given input attribute list to identify ports where the glitch signal should end up.
+
+        Returns:
+            List containing attribute names to identify glitch path end ports.
+        """
+        return self.__virus_signature_option_inputs[SignatureOptions.GLITCH_POWER_END_OPTION]
+
+    def get_glitch_power_threshold(self) -> Union[int, None]:
+        """Getter method to return given glitch power threshold.
+
+        Returns:
+            Integer noting the threshold for reporting glitchy paths.
+        """
+        return self.__virus_signature_option_inputs[SignatureOptions.GLITCH_POWER_THRESHOLD_OPTION]
+
+    def get_connection_value_switch_power_cost_list(self) -> List[Dict[str, Union[str, Pattern[str]]]]:
+        """Getter method to return given connection list with their switching power costs.
+
+        Returns:
+            List containing connection regular expressions with their power costs for power estimation.
+        """
+        return self.__virus_signature_option_inputs[SignatureOptions.GLITCH_POWER_COST_OPTION]
+
+    def get_disallowed_attributes_list(self) -> List[str]:
+        """Getter method to return a list of disallowed attributes.
+
+        Returns:
+            List of strings containing the disallowed attributes.
+        """
+        return self.__virus_signature_option_inputs[SignatureOptions.DISALLOWED_ATTRIBUTES_OPTION]
 
     def __set_virus_signature_set(self, config_parser: ConfigParser) -> None:
         for item in config_parser.items(self.__CONFIG_SCANNER_SECTION):

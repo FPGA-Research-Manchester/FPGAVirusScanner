@@ -9,6 +9,7 @@ from virusscanner.interface.datastructures.port import Port
 class Graph:
     """Dataclass for holding implemented graph connections. In the future could be replaced by networkx.DiGraph."""
     connections: List[Connection] = field(default_factory=list)
+    lut_values: Dict[str, Dict[str, str]] = field(default_factory=dict)  # TODO change to Dict[Port...
     __adjacency_list: Dict[Port, Tuple[Port, ...]] = field(default_factory=dict, init=False, repr=False, compare=False)
     __reverse_adjacency_list: Dict[Port, Tuple[Port, ...]] = field(default_factory=dict, init=False, repr=False,
                                                                    compare=False)

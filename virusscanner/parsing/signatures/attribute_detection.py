@@ -3,8 +3,6 @@ from virusscanner.interface.input_interface import Input
 from virusscanner.parsing.signatures.abstract_signature import VirusSignature
 
 
-# TODO: Update README
-# TODO: Make it take an input instead of hard coding
 class AttributeDetector(VirusSignature):
     """Initial class for detecting forbidden attributes
 
@@ -15,14 +13,19 @@ class AttributeDetector(VirusSignature):
 
     def __init__(self, input_parameters: Input) -> None:
         self.__input_parameters = input_parameters
+        self.__list_of_disallowed_attributes = input_parameters.get_disallowed_attributes_list()
 
     def detect_virus(self) -> float:
-        fault_count = 0
+        fault_count_dict = dict.fromkeys(self.__list_of_disallowed_attributes, 0)
         for connection in self.__input_parameters.get_connections_graph().connections:
-            if "LATCH" in connection.attributes:
-                fault_count += 1
+            for attribute in self.__list_of_disallowed_attributes:
+                if attribute in connection.attributes:
+                    fault_count_dict[attribute] += 1
 
-        if fault_count != 0:
-            print(str(fault_count), "latch connections found!")
+        score = 0
+        for attribute in fault_count_dict:
+            if fault_count_dict[attribute] != 0:
+                score += fault_count_dict[attribute]
+                print(str(fault_count_dict[attribute]), attribute, "connections found!")
 
-        return fault_count
+        return score

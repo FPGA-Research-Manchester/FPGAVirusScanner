@@ -102,3 +102,82 @@ class TestSignatureOptions(TestCase):
         mock_config_parser.get.assert_called_once_with(expected_section, expected_option)
         mock_csv_reader.return_value.get_regexps_list_from_file.assert_not_called()
         self.assertEqual(result_dict, {expected_key: [first_entry, second_entry]})
+
+    @mock.patch("virusscanner.interface.signature_options.CSVInput")
+    def test_set_virus_signature_option_inputs_uses_int_inputs(self, mock_csv_reader):
+        expected_key = "fake_key"
+        expected_section = "fake_section"
+        expected_option = "fake_option"
+        input_signature = "fake_signature"
+
+        signature_options_dict = {
+            input_signature: [
+                SignatureOption(expected_key, expected_section, expected_option,
+                                SignatureOptions._INT_TYPE, False)]
+        }
+
+        expected_int_entry = 2000
+
+        mock_config_parser = mock.Mock()
+        mock_config_parser.get.return_value = str(expected_int_entry)
+        result_dict = dict()
+
+        with mock.patch.object(SignatureOptions, "_signature_options_dict", signature_options_dict):
+            SignatureOptions().set_virus_signature_option_inputs({input_signature},
+                                                                 result_dict, mock_config_parser)
+
+        mock_config_parser.get.assert_called_once_with(expected_section, expected_option)
+        mock_csv_reader.return_value.get_regexps_list_from_file.assert_not_called()
+        self.assertEqual(result_dict, {expected_key: expected_int_entry})
+
+    @mock.patch("virusscanner.interface.signature_options.CSVInput")
+    def test_set_virus_signature_option_inputs_accepts_optional_input(self, mock_csv_reader):
+        expected_key = "fake_key"
+        expected_section = "fake_section"
+        expected_option = "fake_option"
+        input_signature = "fake_signature"
+
+        signature_options_dict = {
+            input_signature: [
+                SignatureOption(expected_key, expected_section, expected_option,
+                                SignatureOptions._INT_TYPE, True)]
+        }
+
+        expected_int_entry = 2000
+
+        mock_config_parser = mock.Mock()
+        mock_config_parser.get.return_value = str(expected_int_entry)
+        result_dict = dict()
+
+        with mock.patch.object(SignatureOptions, "_signature_options_dict", signature_options_dict):
+            SignatureOptions().set_virus_signature_option_inputs({input_signature},
+                                                                 result_dict, mock_config_parser)
+
+        mock_config_parser.get.assert_called_once_with(expected_section, expected_option, fallback=None)
+        mock_csv_reader.return_value.get_regexps_list_from_file.assert_not_called()
+        self.assertEqual(result_dict, {expected_key: expected_int_entry})
+
+    @mock.patch("virusscanner.interface.signature_options.CSVInput")
+    def test_set_virus_signature_option_inputs_accepts_missing_optional_input(self, mock_csv_reader):
+        expected_key = "fake_key"
+        expected_section = "fake_section"
+        expected_option = "fake_option"
+        input_signature = "fake_signature"
+
+        signature_options_dict = {
+            input_signature: [
+                SignatureOption(expected_key, expected_section, expected_option,
+                                SignatureOptions._INT_TYPE, True)]
+        }
+
+        mock_config_parser = mock.Mock()
+        mock_config_parser.get.return_value = None
+        result_dict = dict()
+
+        with mock.patch.object(SignatureOptions, "_signature_options_dict", signature_options_dict):
+            SignatureOptions().set_virus_signature_option_inputs({input_signature},
+                                                                 result_dict, mock_config_parser)
+
+        mock_config_parser.get.assert_called_once_with(expected_section, expected_option, fallback=None)
+        mock_csv_reader.return_value.get_regexps_list_from_file.assert_not_called()
+        self.assertEqual(result_dict, {expected_key: None})

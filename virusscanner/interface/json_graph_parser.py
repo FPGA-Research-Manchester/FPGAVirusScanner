@@ -43,7 +43,7 @@ class GraphCreator:
             json_data = json.load(json_file_handle)
 
         found_connections_list = []
-        for connection in json_data:
+        for connection in json_data["CONNECTIONS"]:
             for field in connection:
                 if "tile" in connection[field]:
                     connection[field]["tile"] = Tile(**connection[field]["tile"])
@@ -51,5 +51,7 @@ class GraphCreator:
                 else:
                     connection[field] = set(connection[field])
             found_connections_list.append(Connection(**connection))
-
-        return Graph(connections=found_connections_list)
+        if "LUT_VALUES" in json_data:
+            return Graph(connections=found_connections_list, lut_values=json_data["LUT_VALUES"])
+        else:
+            return Graph(connections=found_connections_list)

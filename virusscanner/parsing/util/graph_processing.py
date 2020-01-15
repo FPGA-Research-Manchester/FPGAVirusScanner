@@ -3,6 +3,7 @@ from typing import List, Dict, Tuple, Pattern, Optional, Set, Union
 
 from virusscanner.interface.datastructures.connection import Connection
 from virusscanner.interface.datastructures.port import Port
+from virusscanner.interface.datastructures.tile import Tile
 
 
 class GraphProcessor:
@@ -157,6 +158,8 @@ class GraphProcessor:
             current_path_stack: List containing nodes currently already visited.
         """
         current_path_stack = current_path_stack if current_path_stack else [start_port]
+        if start_port not in visited_ports_set:
+            visited_ports_set.add(start_port)
 
         for connecting_port in adjacency_list.get(start_port, []):
             if connecting_port not in current_path_stack and connecting_port not in visited_ports_set:
@@ -185,3 +188,32 @@ class GraphProcessor:
         """
         return {getattr(connection, dangling_port_type) for connection in connections_list if
                 getattr(connection, dangling_port_type) not in adjacency_list}
+
+    @staticmethod
+    def is_connection_in_lut_tile(begin_port_tile: Tile, end_port_tile: Tile,
+                                  graph_lut_values: Dict[str, Dict[str, str]]) -> bool:
+        """Method to say if the given connection is in a defined LUT tile in the given graph.
+
+        Args:
+            begin_port_tile: Tile object noting the begin of the given connection.
+            end_port_tile: Tile object noting the end of the given connection.
+            graph_lut_values: Dictionary holding all of the LUT values.
+
+        Returns:
+            Boolean which says if the given connection is in a tile with LUTs.
+        """
+        return begin_port_tile == end_port_tile and str(begin_port_tile) in graph_lut_values
+
+    @staticmethod
+    def get_lut_value(end_port: Port, graph_lut_values_dict: Dict[str, Dict[str, str]]) -> Optional[str]:
+        """Method to check if the given port is a valid port going through a LUT.
+
+        Args:
+            end_port: Port of the end of the connection going through a LUT.
+            graph_lut_values_dict: Values of all of the LUTs in the graph.
+            
+        Returns:
+            LUT value if there is one for the given begin port.
+        """
+
+        return graph_lut_values_dict[str(end_port.tile)].get(end_port.name)

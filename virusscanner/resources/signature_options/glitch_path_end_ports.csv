@@ -1,0 +1,2 @@
+tile_type,tile_x,tile_y,port
+CLE.+,\d+,\d+,.+_OUT(1|2)$

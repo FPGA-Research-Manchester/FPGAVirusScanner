@@ -141,8 +141,32 @@ class TestGraphProcessor(TestCase):
         self.assertCountEqual(resulting_list, expected_paths)
 
     def test_depth_first_invalid_path_search_with_routing_skips_visited_ports(self):
-        # TODO: finish writing this test!
-        self.fail()
+        resulting_list = []
+        input_list = {self.first_port: (self.second_port,), self.second_port: (self.first_port, self.third_port,)}
+
+        end_ports = {self.second_port}
+        routing_ports = {self.second_port}
+
+        expected_paths = []
+
+        GraphProcessor().depth_first_invalid_path_search_with_routing(self.first_port, end_ports, routing_ports,
+                                                                      input_list, resulting_list, {self.second_port})
+        self.assertCountEqual(resulting_list, expected_paths)
+
+    def test_depth_first_invalid_path_search_with_routing_updates_visited_ports(self):
+        resulting_list = []
+        input_list = {self.first_port: (self.second_port,), self.second_port: (self.first_port, self.third_port,)}
+
+        end_ports = {self.second_port}
+        routing_ports = {self.second_port}
+
+        input_visited_ports_set = set()
+        expected_visited_ports_set = {self.first_port, self.second_port, self.third_port}
+
+        GraphProcessor().depth_first_invalid_path_search_with_routing(self.first_port, end_ports, routing_ports,
+                                                                      input_list, resulting_list,
+                                                                      input_visited_ports_set)
+        self.assertEqual(input_visited_ports_set, expected_visited_ports_set)
 
     def test_depth_first_search_adds_two_paths_to_results(self):
         mock_port = mock.Mock()
@@ -228,3 +252,35 @@ class TestGraphProcessor(TestCase):
                           self.first_port: (self.third_port,)}
 
         self.assertEqual(GraphProcessor().find_dangling_ports(input_graph, adjacency_list, "begin"), set())
+
+    def test_is_connection_in_lut_tile_returns_true(self):
+        input_tile = Tile("FAKE_TILE", 1, 1)
+        input_lut_dict = {str(input_tile): mock.Mock()}
+        self.assertTrue(GraphProcessor().is_connection_in_lut_tile(input_tile, input_tile, input_lut_dict))
+
+    def test_is_connection_in_lut_tile_returns_false_with_different_tiles(self):
+        first_tile = Tile("FAKE_TILE1", 1, 1)
+        second_tile = Tile("FAKE_TILE2", 1, 1)
+        input_lut_dict = {str(first_tile): mock.Mock()}
+        self.assertFalse(GraphProcessor().is_connection_in_lut_tile(first_tile, second_tile, input_lut_dict))
+
+    def test_is_connection_in_lut_tile_returns_false_with_missing_tiles(self):
+        first_tile = Tile("FAKE_TILE1", 1, 1)
+        second_tile = Tile("FAKE_TILE2", 1, 1)
+        input_lut_dict = {str(second_tile): mock.Mock()}
+        self.assertFalse(GraphProcessor().is_connection_in_lut_tile(first_tile, first_tile, input_lut_dict))
+
+    def test_get_lut_value_returns_none_without_matching_port(self):
+        lut_tile = Tile("FAKE_TILE", 1, 1)
+        input_port = Port(lut_tile, "FAKE_N1")
+        lut_values_dict = {str(lut_tile): {"M6LUT": "10"}}
+
+        self.assertEqual(GraphProcessor().get_lut_value(input_port, lut_values_dict), None)
+
+    def test_get_lut_value_returns_lut_value(self):
+        expected_lut_value = "10"
+        lut_tile = Tile("FAKE_TILE", 1, 1)
+        input_port = Port(lut_tile, "N6LUT")
+        lut_values_dict = {str(lut_tile): {"N6LUT": expected_lut_value}}
+
+        self.assertEqual(GraphProcessor().get_lut_value(input_port, lut_values_dict), expected_lut_value)

@@ -11,12 +11,10 @@ class FanOutDetector(VirusSignature):
 
     """
 
-    # TODO: Get it as an input parameter from the config
-    __FAN_OUT_THRESHOLD = 100
-
     def __init__(self, input_parameters: Input) -> None:
         self.__input_parameters = input_parameters
         self.__found_connections = input_parameters.get_connections_graph()
+        self.__fan_out_threshold = self.__input_parameters.get_fan_out_threshold()
 
     def detect_virus(self) -> float:
         graph_processor = GraphProcessor()
@@ -35,8 +33,13 @@ class FanOutDetector(VirusSignature):
             fan_out_counters = dict()
             for path in found_paths:
                 fan_out_counters[path[0]] = fan_out_counters[path[0]] + 1 if path[0] in fan_out_counters else 1
-            for begin_port in fan_out_counters:
-                if fan_out_counters[begin_port] > self.__FAN_OUT_THRESHOLD:
-                    print(begin_port, "has a fan-out of:", fan_out_counters[begin_port])
-                    score += 1
+            if self.__fan_out_threshold:
+                for begin_port in fan_out_counters:
+                    if fan_out_counters[begin_port] > self.__fan_out_threshold:
+                        print(begin_port, "has a fan-out of:", fan_out_counters[begin_port])
+                        score += 1
+            else:
+                max_fan_out_port = max(fan_out_counters.keys(), key=(lambda k: fan_out_counters[k]))
+                print(max_fan_out_port, "has a fan-out of:", fan_out_counters[max_fan_out_port])
+                score = fan_out_counters[max_fan_out_port]
         return score
