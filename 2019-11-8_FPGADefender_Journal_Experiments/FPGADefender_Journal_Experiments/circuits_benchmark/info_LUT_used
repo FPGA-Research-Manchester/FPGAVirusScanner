@@ -1,0 +1,16 @@
+./8b10b_encdec.dcp => LUT Used = 72
+./MIPS_project.dcp => LUT Used = 4163
+./a_vhdl_can_controller.dcp => LUT Used = 1310
+./aes_anuj.dcp => LUT Used = 4520
+./bcd_adder.dcp => LUT Used = 68
+./ca_prng.dcp => LUT Used = 237
+./cordic_core.dcp => LUT Used = 1312
+./des_Anuj.dcp => LUT Used = 278
+./i2c.dcp => LUT Used = 307
+./parallel_scrambler.dcp => LUT Used = 66
+./picorv.dcp => LUT Used = 3556
+./rng_Anuj.dcp => LUT Used = 1069
+./rs232_interface.dcp => LUT Used = 102
+./sha3.dcp => LUT Used = 10662
+./spi.dcp => LUT Used = 988
+./steppermotordrive.dcp => LUT Used = 69

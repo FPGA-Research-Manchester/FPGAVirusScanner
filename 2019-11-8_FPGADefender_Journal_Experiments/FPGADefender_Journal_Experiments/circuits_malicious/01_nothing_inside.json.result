@@ -1,0 +1,18 @@
+Output for ../db/circuits_malicious/01_nothing_inside.json generated at 2019-11-05 19:44:57.983152
+
+CombinatorialLoopDetector: 0.0
+Nothing found.
+
+ShortCircuitDetector: 0.0
+Nothing found.
+
+AntennaDetector: 0.0
+Nothing found.
+
+AttributeDetector: 0.0
+Nothing found.
+
+FanOutDetector: 0.0
+Nothing found.
+
+Final score: 0.0
