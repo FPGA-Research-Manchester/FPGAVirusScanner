@@ -26,7 +26,7 @@ class TestGraphCreator(TestCase):
             Connection(Port(Tile("CLEM", 2, 50), "FAKE_PORT2"), Port(Tile("INT", 3, 3), "FAKE_PORT3"),
                        set(expected_attributes))]
 
-        mock_json.load.return_value = input_connections
+        mock_json.load.return_value = dict(CONNECTIONS=input_connections)
         self.assertEqual(GraphCreator().get_connections_from_json("some_file"), Graph(connections=expected_connections))
         mock_open.return_value.__enter__.assert_called_once()
 
