@@ -46,7 +46,7 @@ class TestInput(TestCase):
         mock_parser.return_value.has_section.return_value = False
 
         self.assertEqual(
-            Input("some_config", "output.txt", connections_graph_file="some_json").get_connections_graph(),
+            Input("some_config", "output.txt", "some_json").get_connections_graph(),
             mock_creator.return_value.get_connections_from_json.return_value)
 
         self.assertEqual(mock_parser.return_value.get.call_count, 0)
@@ -54,9 +54,9 @@ class TestInput(TestCase):
     @mock.patch("virusscanner.interface.input_interface.ConfigParser")
     @mock.patch("virusscanner.interface.input_interface.GraphCreator")
     def test_input_uses_attribute_adder(self, mock_creator, mock_parser):
-        mock_parser.return_value.has_section.side_effect = [True, False]
+        mock_parser.return_value.has_section.side_effect = [False, True]
 
-        Input("some_config", "output.txt", connections_graph_file="some_json")
+        Input("some_config", "output.txt", "some_json")
 
         mock_creator.return_value.get_connections_from_json.assert_called_once()
         mock_parser.return_value.get.assert_called_once()
@@ -67,7 +67,7 @@ class TestInput(TestCase):
     def test_input_uses_signature_options(self, mock_creator, mock_parser):
         mock_parser.return_value.has_section.return_value = False
 
-        Input("some_config", "output.txt", connections_graph_file="some_json")
+        Input("some_config", "output.txt", "some_json")
 
         mock_creator.return_value.get_connections_from_json.assert_called_once()
         self.mock_options.return_value.set_virus_signature_option_inputs.assert_called_once()
@@ -78,7 +78,7 @@ class TestInput(TestCase):
     def test_input_removes_wanted_connections(self, mock_remover, mock_creator, mock_parser):
         mock_parser.return_value.has_section.side_effect = [True, False]
 
-        Input("some_config", "output.txt", connections_graph_file="some_json")
+        Input("some_config", "output.txt", "some_json")
 
         mock_creator.return_value.get_connections_from_json.assert_called_once()
         mock_parser.return_value.get.assert_called_once()
