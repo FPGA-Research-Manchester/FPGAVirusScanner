@@ -11,9 +11,7 @@
 ./Mali_10_DSP_RO.dcp => LUT Used = 0
 ./Mali_11_Latch_RO.dcp => LUT Used = 2000
 ./Mali_12_FF_RO.dcp => LUT Used = 6000
-./Mali_13_FF_glitch.dcp => LUT Used = 2000
 ./Mali_14_LUTs_Dual_Output.dcp => LUT Used = 4000
 ./Mali_15_Glitch.dcp => LUT Used = 6000
 ./Mali_16_Heater.dcp => LUT Used = 2000
-./Mali_17_Dual_LUTs_1RO.dcp => LUT Used = 4000
 ./elegant_short.SHORT.latest.dcp => LUT Used = 15974
