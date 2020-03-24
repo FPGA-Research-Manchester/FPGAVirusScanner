@@ -1,0 +1,15 @@
+Output for data/normal_scans/fir_filter_OOC_Synth_partial.json generated at 2020-03-13 14:27:56.265817
+
+CombinatorialLoopDetector: 0.0
+Nothing found.
+
+ShortCircuitDetector: 0.0
+Nothing found.
+
+AttributeDetector: 4.0
+4 LATCH connections found!
+
+FanOutDetector: 749.0
+CLEM_X14Y15 CLE_CLE_M_SITE_0_EQ has a fan-out of: 749
+
+Final score: 753.0

@@ -1,0 +1,15 @@
+Output for data/normal_scans/dct_OOC_Synth_partial.json generated at 2020-03-19 10:48:08.398059
+
+CombinatorialLoopDetector: 0.0
+Nothing found.
+
+ShortCircuitDetector: 0.0
+Nothing found.
+
+AttributeDetector: 16.0
+16 LATCH connections found!
+
+FanOutDetector: 2173.0
+CLEM_X19Y25 CLE_CLE_M_SITE_0_E_O has a fan-out of: 2173
+
+Final score: 2189.0

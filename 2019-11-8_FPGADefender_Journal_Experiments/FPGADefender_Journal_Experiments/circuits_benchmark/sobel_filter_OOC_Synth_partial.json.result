@@ -1,0 +1,15 @@
+Output for data/normal_scans/sobel_filter_OOC_Synth_partial.json generated at 2020-03-13 14:27:58.614393
+
+CombinatorialLoopDetector: 0.0
+Nothing found.
+
+ShortCircuitDetector: 0.0
+Nothing found.
+
+AttributeDetector: 0.0
+Nothing found.
+
+FanOutDetector: 228.0
+CLEM_X19Y21 CLE_CLE_M_SITE_0_B_O has a fan-out of: 228
+
+Final score: 228.0

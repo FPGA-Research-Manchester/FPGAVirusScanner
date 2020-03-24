@@ -1,0 +1,15 @@
+Output for data/normal_scans/aes_OOC_Synth_partial.json generated at 2020-03-13 14:27:58.370435
+
+CombinatorialLoopDetector: 0.0
+Nothing found.
+
+ShortCircuitDetector: 0.0
+Nothing found.
+
+AttributeDetector: 0.0
+Nothing found.
+
+FanOutDetector: 371.0
+CLEL_R_X15Y46 CLE_CLE_L_SITE_0_DQ has a fan-out of: 371
+
+Final score: 371.0

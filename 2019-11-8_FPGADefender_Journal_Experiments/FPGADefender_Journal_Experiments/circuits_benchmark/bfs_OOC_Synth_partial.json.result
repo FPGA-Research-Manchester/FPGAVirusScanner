@@ -1,0 +1,15 @@
+Output for data/normal_scans/bfs_OOC_Synth_partial.json generated at 2020-03-13 14:27:39.542569
+
+CombinatorialLoopDetector: 0.0
+Nothing found.
+
+ShortCircuitDetector: 0.0
+Nothing found.
+
+AttributeDetector: 0.0
+Nothing found.
+
+FanOutDetector: 204.0
+CLEL_R_X7Y6 CLE_CLE_L_SITE_0_GMUX has a fan-out of: 204
+
+Final score: 204.0

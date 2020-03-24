@@ -1,0 +1,15 @@
+Output for data/normal_scans/shrek_OOC_Synth_partial.json generated at 2020-03-13 14:27:47.498251
+
+CombinatorialLoopDetector: 0.0
+Nothing found.
+
+ShortCircuitDetector: 0.0
+Nothing found.
+
+AttributeDetector: 0.0
+Nothing found.
+
+FanOutDetector: 147.0
+CLEM_X14Y10 CLE_CLE_M_SITE_0_HQ has a fan-out of: 147
+
+Final score: 147.0

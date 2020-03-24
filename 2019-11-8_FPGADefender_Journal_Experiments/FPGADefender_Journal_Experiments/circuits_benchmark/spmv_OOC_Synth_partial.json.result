@@ -1,0 +1,15 @@
+Output for data/normal_scans/spmv_OOC_Synth_partial.json generated at 2020-03-13 14:42:30.646791
+
+CombinatorialLoopDetector: 0.0
+Nothing found.
+
+ShortCircuitDetector: 0.0
+Nothing found.
+
+AttributeDetector: 9.0
+9 LATCH connections found!
+
+FanOutDetector: 1542.0
+CLEM_X29Y23 CLE_CLE_M_SITE_0_F_O has a fan-out of: 1542
+
+Final score: 1551.0
