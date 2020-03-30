@@ -21,6 +21,7 @@ class GlitchPowerEstimator(VirusSignature):
     """
 
     DEFAULT_POWER_COST = 1.0
+    MAX_SIGNAL_ACTIVITY = 20.0
 
     def __init__(self, input_parameters: Input) -> None:
         self.__input_parameters = input_parameters
@@ -90,7 +91,8 @@ class GlitchPowerEstimator(VirusSignature):
                                     current_path_stack: List[Port]) -> None:
         if connecting_port not in current_path_stack:
             current_path_stack.append(connecting_port)
-            if connecting_port not in end_ports_set:
+            if connecting_port not in end_ports_set and connection_scores_dict.get(
+                    Connection(start_port, connecting_port), 1.0) < self.MAX_SIGNAL_ACTIVITY:
                 self.__score_paths_from_start_port(connecting_port, adjacency_list_dict, end_ports_set,
                                                    graph_processor, glitch_scorer, connection_scores_dict,
                                                    found_glitch_scores_dict,
